@@ -125,6 +125,7 @@
     .button:hover { background: var(--lime); color: var(--ink); border-color: var(--lime); }
     .button::after { content: "↗"; font-size: 14px; line-height: 8px; }
     .button.disabled { opacity: .62; pointer-events: none; }
+    .actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
 
     .more-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
     .more-grid .card:nth-child(1), .more-grid .card:nth-child(2) { grid-column: span 3; }
@@ -248,11 +249,7 @@
     ];
 
     function card(project, index) {
-      const action = project.live
-        ? `<a class="button" href="${project.live}" target="_blank" rel="noreferrer">Open demo</a>`
-        : project.code
-          ? `<a class="button" href="${project.code}" target="_blank" rel="noreferrer">View code</a>`
-          : ``;
+      const action = `<span class="actions">${project.live ? `<a class="button" href="${project.live}" target="_blank" rel="noreferrer">Open demo</a>` : ``}${project.code ? `<a class="button" href="${project.code}" target="_blank" rel="noreferrer">GitHub</a>` : ``}</span>`;
       return `<article class="card reveal" style="--i:${index}">
         <div class="card-top"><span class="rank">${project.rank}</span></div>
         <div><p class="eyebrow" style="margin-top: 26px; margin-bottom: 0; opacity: .72">${project.category}</p><h3>${project.title}</h3><p>${project.desc}</p></div>
