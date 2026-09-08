@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Prathick's curated portfolio of products across AI, education, realtime collaboration, presentation, media, and mobile.">
+  <meta name="theme-color" content="#eee9df">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>Prathick — Product Atlas</title>
+  <style>
+    :root {
+      --paper: #eee9df;
+      --paper-deep: #ded8ca;
+      --ink: #171814;
+      --muted: #6c6b62;
+      --line: rgba(23, 24, 20, .16);
+      --coral: #f36b4f;
+      --blue: #3658e8;
+      --lime: #c6e878;
+      --gold: #f4c95d;
+      --teal: #5ad1c7;
+      --white: #fbfaf5;
+      --shadow: 0 18px 50px rgba(35, 32, 25, .11);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 86% 8%, rgba(54, 88, 232, .12), transparent 25rem),
+        radial-gradient(circle at 8% 46%, rgba(243, 107, 79, .10), transparent 22rem),
+        var(--paper);
+      font-family: "Avenir Next", "Gill Sans", "Trebuchet MS", sans-serif;
+      line-height: 1.45;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .24;
+      background-image: radial-gradient(rgba(23, 24, 20, .18) .6px, transparent .6px);
+      background-size: 5px 5px;
+      mix-blend-mode: multiply;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow, .label, .rank, .meta, .chip, .button, .footnote {
+      font-family: "DM Mono", "SFMono-Regular", Consolas, monospace;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+    .eyebrow { font-size: 11px; font-weight: 700; }
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .brand-mark {
+      width: 20px; height: 20px; display: inline-grid; place-items: center;
+      background: var(--ink); color: var(--lime); font-size: 12px; transform: rotate(45deg);
+    }
+    .brand-mark span { transform: rotate(-45deg); }
+    .masthead a { text-decoration: none; }
+    .masthead .meta { color: var(--muted); font-size: 10px; }
+
+    .hero { padding: 74px 0 92px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 58px; align-items: stretch; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: Didot, "Bodoni 72", "Iowan Old Style", Georgia, serif; font-weight: 500; letter-spacing: -.055em; }
+    h1 { max-width: 760px; margin-bottom: 24px; font-size: clamp(62px, 10vw, 132px); line-height: .86; }
+    .hero-copy { max-width: 620px; color: var(--muted); font-size: 18px; }
+    .hero-copy strong { color: var(--ink); font-weight: 650; }
+    .hero-index { position: relative; min-height: 390px; padding: 34px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; background: var(--ink); color: var(--white); box-shadow: var(--shadow); }
+    .hero-index::before { content: "AI   EDU   REALTIME   MEDIA"; position: absolute; top: 35px; right: -42px; color: rgba(198,232,120,.62); font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: .18em; transform: rotate(90deg); transform-origin: center; }
+    .hero-index::after { content: ""; position: absolute; width: 360px; height: 360px; right: -102px; bottom: -164px; border: 1px solid rgba(198,232,120,.65); border-radius: 50%; box-shadow: 0 0 0 24px rgba(198,232,120,.07), 0 0 0 48px rgba(198,232,120,.05), 0 0 0 72px rgba(198,232,120,.035); }
+    .hero-index .label { color: var(--lime); font-size: 10px; }
+    .index-trail { position: relative; z-index: 1; align-self: flex-end; margin-top: -8px; color: rgba(251,250,245,.58); font-family: "DM Mono", monospace; font-size: 9px; letter-spacing: .1em; writing-mode: vertical-rl; transform: rotate(180deg); }
+    .hero-index .big { position: relative; z-index: 1; margin: 52px 0 20px; font-family: Didot, Georgia, serif; font-size: clamp(148px, 16vw, 216px); line-height: .7; letter-spacing: -.12em; }
+    .hero-index p { position: relative; z-index: 1; max-width: 320px; margin-bottom: 0; color: rgba(251,250,245,.68); font-size: 14px; }
+    .stats { display: flex; gap: 20px; margin-top: 34px; }
+    .stat { border-top: 2px solid var(--ink); padding-top: 8px; min-width: 102px; }
+    .stat b { display: block; font-size: 21px; }
+    .stat span { color: var(--muted); font-size: 10px; }
+
+    section { padding: 22px 0 82px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 26px; }
+    h2 { margin-bottom: 0; font-size: clamp(40px, 6vw, 74px); line-height: .9; }
+    .section-note { max-width: 330px; margin-bottom: 0; color: var(--muted); font-size: 13px; }
+    .featured { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .card { position: relative; display: flex; flex-direction: column; min-height: 300px; padding: 23px; overflow: hidden; background: rgba(251,250,245,.72); border: 1px solid var(--line); box-shadow: 0 3px 0 rgba(23,24,20,.03); transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow); background: var(--white); }
+    .card:nth-child(1) { grid-column: span 7; min-height: 400px; background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .card:nth-child(2) { grid-column: span 5; min-height: 400px; background: var(--coral); border-color: var(--coral); }
+    .card:nth-child(3), .card:nth-child(4), .card:nth-child(5) { grid-column: span 4; }
+    .card:nth-child(1) .muted, .card:nth-child(2) .muted { color: rgba(255,255,255,.7); }
+    .card:nth-child(1) .chip, .card:nth-child(2) .chip, .card:nth-child(3) .chip, .card:nth-child(4) .chip, .card:nth-child(5) .chip { border-color: currentColor; }
+    .card-top, .card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .rank { font-size: 11px; font-weight: 700; }
+    .status { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 10px; }
+    .card:nth-child(1) .status, .card:nth-child(2) .status { color: inherit; opacity: .8; }
+    .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px rgba(198,232,120,.18); }
+    .status.local::before { background: var(--blue); box-shadow: 0 0 0 3px rgba(54,88,232,.15); }
+    .status.android::before { background: var(--coral); box-shadow: 0 0 0 3px rgba(243,107,79,.15); }
+    .card h3 { max-width: 620px; margin: 52px 0 12px; font-size: clamp(33px, 4.4vw, 64px); line-height: .88; }
+    .card:nth-child(n+3) h3 { margin-top: 38px; font-size: 39px; }
+    .card p { max-width: 560px; margin-bottom: 20px; color: var(--muted); font-size: 14px; }
+    .card:nth-child(1) p, .card:nth-child(2) p, .card:nth-child(4) p { color: rgba(255,255,255,.76); }
+    .card:nth-child(3) { background: var(--lime); border-color: var(--lime); }
+    .card:nth-child(4) { background: var(--blue); border-color: var(--blue); color: var(--white); }
+    .card:nth-child(5) { background: var(--gold); border-color: var(--gold); }
+    .card:nth-child(3) p, .card:nth-child(5) p { color: rgba(23,24,20,.72); }
+    .card:nth-child(3) .status, .card:nth-child(5) .status { color: rgba(23,24,20,.78); }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .chip { padding: 6px 8px; border: 1px solid var(--line); border-radius: 999px; color: inherit; font-size: 9px; }
+    .card-bottom { margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--line); }
+    .card:nth-child(1) .card-bottom, .card:nth-child(2) .card-bottom, .card:nth-child(4) .card-bottom { border-color: rgba(255,255,255,.28); }
+    .signal { max-width: 75%; color: var(--muted); font-size: 11px; }
+    .card:nth-child(1) .signal, .card:nth-child(2) .signal, .card:nth-child(4) .signal { color: rgba(255,255,255,.72); }
+    .button { display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid currentColor; text-decoration: none; font-size: 9px; font-weight: 700; white-space: nowrap; }
+    .button:hover { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+    .button::after { content: "↗"; font-size: 14px; line-height: 8px; }
+    .button.disabled { opacity: .62; pointer-events: none; }
+
+    .more-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .more-grid .card:nth-child(1), .more-grid .card:nth-child(2) { grid-column: span 3; }
+    .more-grid .card:nth-child(3), .more-grid .card:nth-child(4), .more-grid .card:nth-child(5) { grid-column: span 2; min-height: 390px; }
+    .more-grid .card:nth-child(2) { background: var(--teal); border-color: var(--teal); color: var(--ink); }
+    .more-grid .card:nth-child(3) { background: var(--coral); border-color: var(--coral); }
+    .more-grid .card:nth-child(4) { background: var(--blue); border-color: var(--blue); color: var(--white); }
+    .more-grid .card:nth-child(5) { background: var(--lime); border-color: var(--lime); }
+    .more-grid .card:nth-child(2) p, .more-grid .card:nth-child(3) p, .more-grid .card:nth-child(5) p { color: rgba(23, 24, 20, .72); }
+    .more-grid .card:nth-child(4) p, .more-grid .card:nth-child(4) .status { color: rgba(255, 255, 255, .78); }
+    .more-grid .card:nth-child(2) .card-bottom, .more-grid .card:nth-child(3) .card-bottom, .more-grid .card:nth-child(4) .card-bottom, .more-grid .card:nth-child(5) .card-bottom { border-color: rgba(23, 24, 20, .24); }
+    .more-grid .card:nth-child(4) .card-bottom { border-color: rgba(255, 255, 255, .3); }
+    .more-grid .card:nth-child(2) .signal, .more-grid .card:nth-child(3) .signal, .more-grid .card:nth-child(5) .signal { color: rgba(23, 24, 20, .72); }
+    .more-grid .card { min-height: 360px; padding: 18px; }
+    .more-grid .card h3 { margin-top: 42px; font-size: 34px; }
+    .more-grid .card p { font-size: 13px; }
+
+    .footer-creative { position: relative; min-height: 220px; padding: 30px 34px 24px; overflow: hidden; background: var(--ink); color: var(--white); box-shadow: var(--shadow); }
+    .footer-creative::after { content: ""; position: absolute; width: 300px; height: 300px; right: -80px; top: -152px; border: 1px solid rgba(198,232,120,.56); border-radius: 50%; box-shadow: 0 0 0 22px rgba(198,232,120,.07), 0 0 0 44px rgba(198,232,120,.045); }
+    .footer-creative .eyebrow { color: var(--lime); }
+    .footer-creative h2 { position: relative; z-index: 1; max-width: 680px; margin: 42px 0 26px; color: var(--white); font-size: clamp(42px, 7vw, 84px); line-height: .84; }
+    .footer-meta { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.24); color: rgba(255,255,255,.68); font-size: 11px; }
+    .footer-meta strong { color: var(--white); }
+    .footnote { font-size: 9px; }
+    .reveal { animation: rise .7s both; animation-delay: calc(var(--i, 0) * 70ms); }
+    @keyframes rise { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: none; } }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 34px; padding-top: 52px; }
+      .hero-index { min-height: 190px; }
+      .hero-index .big { font-size: 106px; }
+      .card:nth-child(1), .card:nth-child(2), .card:nth-child(3), .card:nth-child(4), .card:nth-child(5) { grid-column: span 6; }
+      .more-grid { grid-template-columns: repeat(2, 1fr); }
+      .more-grid .card:nth-child(n) { grid-column: span 1; }
+    }
+    @media (max-width: 590px) {
+      .wrap { width: min(100% - 26px, 1180px); }
+      .masthead .meta { display: none; }
+      .hero { padding: 48px 0 62px; }
+      h1 { font-size: 65px; }
+      .hero-copy { font-size: 16px; }
+      .stats { gap: 11px; }
+      .stat { min-width: 0; flex: 1; }
+      .card:nth-child(1), .card:nth-child(2), .card:nth-child(3), .card:nth-child(4), .card:nth-child(5) { grid-column: 1 / -1; min-height: 330px; }
+      .card:nth-child(1), .card:nth-child(2) { min-height: 370px; }
+      .more-grid { grid-template-columns: 1fr; }
+      .more-grid .card:nth-child(n) { grid-column: 1 / -1; }
+      .more-grid .card { min-height: 300px; }
+      .section-head { display: block; }
+      .section-note { margin-top: 16px; }
+      .finish { padding: 25px 20px; }
+      footer { display: block; }
+      footer .footnote { margin-top: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <header class="wrap masthead">
+    <a class="brand" href="#top" aria-label="Back to top"><span class="brand-mark"><span>+</span></span> PRATHICK</a>
+    <span class="meta">PRODUCT BUILDER / 2026 EDITION</span>
+    <a class="meta" href="#work">10 PROJECTS ↓</a>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <div>
+        <p class="eyebrow">Selected work / products / systems</p>
+        <h1>Products built<br>to be used.</h1>
+        <p class="hero-copy">A focused selection from my best work across <strong>AI, education, realtime collaboration, research, media, and mobile.</strong> Ranked by the combination that matters: clear product thinking, real engineering depth, and how quickly someone can understand the result.</p>
+        <div class="stats" aria-label="Portfolio stats">
+          <div class="stat"><b>10</b><span>selected builds</span></div>
+          <div class="stat"><b>10</b><span>live builds</span></div>
+          <div class="stat"><b>1</b><span>clear point of view</span></div>
+        </div>
+      </div>
+      <aside class="hero-index" aria-label="Portfolio index">
+        <span class="label">Portfolio index</span>
+        <span class="index-trail">AI&nbsp;&nbsp; / &nbsp;&nbsp;EDU&nbsp;&nbsp; / &nbsp;&nbsp;REALTIME&nbsp;&nbsp; / &nbsp;&nbsp;MEDIA</span>
+        <div class="big">01–10</div>
+        <p>A curated atlas of products, experiments, and systems shaped around people and the problems they actually have.</p>
+      </aside>
+    </section>
+
+    <section id="work" class="wrap">
+      <div class="section-head">
+        <div><p class="eyebrow">01 / The front page</p><h2>Flagship work</h2></div>
+        <p class="section-note">Lead with these five. They give a reviewer the clearest picture of what you can build end to end.</p>
+      </div>
+      <div id="featured" class="featured"></div>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <div><p class="eyebrow">02 / The second wave</p><h2>More work worth showing</h2></div>
+        <p class="section-note">A wider mix of ideas, each shaped around a real person, a real moment, or a real problem.</p>
+      </div>
+      <div id="more" class="more-grid"></div>
+    </section>
+
+    <section class="wrap">
+      <footer class="footer-creative">
+        <p class="eyebrow">END OF INDEX / BEGINNING OF THE NEXT BUILD</p>
+        <h2>Make things<br>people can use.</h2>
+        <div class="footer-meta"><span><strong>PRATHICK</strong> — product engineer, builder, speedcuber.</span><span class="footnote">AI / EDUCATION / REALTIME / MEDIA</span></div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    const projects = [
+      { rank: "01", title: "CineBlock", category: "MOVIE DISCOVERY · SOCIAL", desc: "A social movie universe for swiping, collecting, and finding the one film everyone wants to watch.", stack: ["Next.js", "TypeScript", "Convex"], signal: "Discover. Collect. Share.", live: "https://www.cineblock.in", code: "https://github.com/peterish8/CineBlock.git" },
+      { rank: "02", title: "Cubify", category: "SPEEDCUBING · WCA DATA", desc: "Turns an official WCA ID into a clean speedcubing profile showing personal records, national, continental, and world ranks with honest percentiles.", stack: ["Next.js", "TypeScript", "Python"], signal: "Official data, human-readable.", live: "https://cubify8.vercel.app", code: "https://github.com/peterish8/Cubify.git" },
+      { rank: "03", title: "ClassDrop", category: "CLASSROOM · REAL-TIME", desc: "Instant link sharing for classrooms, with no lost URLs, repeated spelling, or broken lecture momentum.", stack: ["React", "Convex", "Vite"], signal: "Share learning at the speed of thought.", live: "https://www.classdrop.space", code: "https://github.com/peterish8/ClassDrop.git" },
+      { rank: "04", title: "CubeMate", category: "REAL-TIME · WEBRTC", desc: "Live speedcubing rooms with synchronized timers, video, scrambles, and fair skill matching.", stack: ["React", "WebRTC", "Convex"], signal: "Cube. Connect. Compete.", live: "https://cubemateit.vercel.app", code: "" },
+      { rank: "05", title: "EMI Truth", category: "FINTECH · INDIA-FIRST", desc: "A plain-language EMI toolkit that turns confusing loan numbers into honest borrowing decisions.", stack: ["React", "TypeScript", "Vite"], signal: "Honest loan math.", live: "https://www.emitruth.in", code: "" },
+      { rank: "06", title: "EndSem2Prep", category: "EDTECH · STUDY SYSTEM", desc: "A focused interactive study book designed around the rhythm of semester exam preparation.", stack: ["React", "Convex", "TypeScript"], signal: "Study. Focus. Pass.", live: "https://endsem2prep.vercel.app", code: "" },
+      { rank: "07", title: "NotesKit", category: "AI-NATIVE NOTES · MCP · STUDY", desc: "A structured notes workspace where AI describes intent and NotesKit owns the rendering: interactive blocks, mind maps, review, offline mobile, and a real MCP surface.", stack: ["Next.js", "MongoDB", "Auth.js", "MCP"], signal: "AI meets authored structure.", live: "https://noteskit.vercel.app", code: "https://github.com/peterish8/noteskit.git" },
+      { rank: "08", title: "MediaPipe Playground", category: "ON-DEVICE AI · CREATIVE TOOLS", desc: "Five memorable, zero-server demos: local chat, gesture synth, air canvas, face filters, and green-screen video. Every demo creates something the visitor can keep.", stack: ["MediaPipe", "Vite", "WebGPU", "WASM"], signal: "Models that live in the browser.", live: "https://mediapipe-playground.vercel.app", code: "https://github.com/peterish8/mediapipe-playground-portfolio" },
+      { rank: "09", title: "Deckactive", category: "PRESENTATION · REALTIME", desc: "An image-first presentation workspace for QR joining, live polls, quizzes, controlled reveals, and keepsake cards that turn a room into a shared experience.", stack: ["Next.js", "Convex", "Realtime", "QR"], signal: "Make every room respond.", live: "https://deckactive.vercel.app", code: "https://github.com/peterish8/deckactive-portfolio" },
+      { rank: "10", title: "Gavel News Web", category: "CLAT CURRENT AFFAIRS · EDITORIAL", desc: "A student-facing daily current-affairs reader with story pages, Law Decode, Exam Lens, PYQ context, challenges, audio, and a strong editorial identity.", stack: ["Next.js", "Supabase", "Framer Motion", "TTS"], signal: "Current affairs with context.", live: "https://gavel-news-web.vercel.app", code: "https://github.com/peterish8/gavel-news-web-portfolio" }
+    ];
+
+    function card(project, index) {
+      const action = project.live
+        ? `<a class="button" href="${project.live}" target="_blank" rel="noreferrer">Open demo</a>`
+        : project.code
+          ? `<a class="button" href="${project.code}" target="_blank" rel="noreferrer">View code</a>`
+          : ``;
+      return `<article class="card reveal" style="--i:${index}">
+        <div class="card-top"><span class="rank">${project.rank}</span></div>
+        <div><p class="eyebrow" style="margin-top: 26px; margin-bottom: 0; opacity: .72">${project.category}</p><h3>${project.title}</h3><p>${project.desc}</p></div>
+        <div class="chips">${project.stack.map(item => `<span class="chip">${item}</span>`).join('')}</div>
+        <div class="card-bottom"><span class="signal">${project.signal}</span>${action}</div>
+      </article>`;
+    }
+
+    document.querySelector('#featured').innerHTML = projects.slice(0, 5).map(card).join('');
+    document.querySelector('#more').innerHTML = projects.slice(5).map((project, i) => card(project, i + 5)).join('');
+  </script>
+</body>
+</html>
